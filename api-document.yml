@@ -9,8 +9,6 @@ tags:
     description: "認証関連API"
   - name: "user"
     description: "ユーザ関連API"
-  - name: "document"
-    description: "ドキュメント関連API"
 schemes:
   - "http"
 paths:
@@ -102,134 +100,6 @@ paths:
           "schema":
             "$ref": "#/definitions/UserListResponse"
             
-  /documents:
-    get:
-      tags:
-        - "document"
-      summary: "ドキュメント情報一覧取得API"
-      description: "ドキュメント情報一覧を取得します。"
-      consumes:
-        - "application/json"
-      produces:
-        - "application/json"
-      parameters:
-        - in: "header"
-          name: "token"
-          description: "認証トークン"
-          required: true
-          type: "string"
-      responses:
-        200:
-          "description": "A successful response."
-          "schema":
-            "$ref": "#/definitions/DocumentListResponse"
-    
-    post:
-      tags:
-        - "document"
-      summary: "ドキュメント情報作成API"
-      description: "ドキュメント情報を作成します。"
-      consumes:
-        - "application/json"
-      produces:
-        - "application/json"
-      parameters:
-        - in: "header"
-          name: "token"
-          description: "認証トークン"
-          required: true
-          type: "string"
-        - in: "body"
-          name: "body"
-          description: "Request Body"
-          required: true
-          schema:
-            $ref: "#/definitions/DocumentPostRequest"
-      responses:
-        200:
-          "description": "A successful response."
-  
-  /documents/{id}:
-    get:
-      tags:
-        - "document"
-      summary: "ドキュメント情報取得API"
-      description: "ドキュメント情報を取得します。"
-      consumes:
-        - "application/json"
-      produces:
-        - "application/json"
-      parameters:
-        - in: "path"
-          name: "id"
-          description: "ドキュメントID"
-          required: true
-          type: "number"
-        - in: "header"
-          name: "token"
-          description: "認証トークン"
-          required: true
-          type: "string"
-      responses:
-        200:
-          "description": "A successful response."
-          "schema":
-            "$ref": "#/definitions/DocumentGetResponse"
-    
-    put:
-      tags:
-        - "document"
-      summary: "ドキュメント情報作成API"
-      description: "ドキュメント情報を作成します。"
-      consumes:
-        - "application/json"
-      produces:
-        - "application/json"
-      parameters:
-        - in: "path"
-          name: "id"
-          description: "ドキュメントID"
-          required: true
-          type: "number"
-        - in: "header"
-          name: "token"
-          description: "認証トークン"
-          required: true
-          type: "string"
-        - in: "body"
-          name: "body"
-          description: "Request Body"
-          required: true
-          schema:
-            $ref: "#/definitions/DocumentPostRequest"
-      responses:
-        200:
-          "description": "A successful response."
-          
-    delete:
-      tags:
-        - "document"
-      summary: "ドキュメント情報作成API"
-      description: "ドキュメント情報を作成します。"
-      consumes:
-        - "application/json"
-      produces:
-        - "application/json"
-      parameters:
-        - in: "path"
-          name: "id"
-          description: "ドキュメントID"
-          required: true
-          type: "number"
-        - in: "header"
-          name: "token"
-          description: "認証トークン"
-          required: true
-          type: "string"
-      responses:
-        200:
-          "description": "A successful response."
-
 definitions:
   AuthSignUpRequest:
     type: "object"
@@ -280,34 +150,6 @@ definitions:
   UserGetResponse:
     type: "object"
     properties:
-      username:
-        type: "string"
-        description: "ユーザ名"
-  DocumentListResponse:
-    type: "object"
-    properties:
-      documents:
-        type: "array"
-        items:
-          $ref: "#/definitions/DocumentGetResponse"
-  DocumentGetResponse:
-    type: "object"
-    properties:
-      id:
-        type: "number"
-        description: "ドキュメントID"
-      url:
-        type: "string"
-        description: "URL"
-      username:
-        type: "string"
-        description: "ユーザ名"
-  DocumentPostRequest:
-    type: "object"
-    properties:
-      url:
-        type: "string"
-        description: "URL"
       username:
         type: "string"
         description: "ユーザ名"

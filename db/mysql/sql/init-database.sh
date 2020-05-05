@@ -1,1 +1,1 @@
-mysql -u user -ppassword documents_api < "/docker-entrypoint-initdb.d/ddl.sql"
+mysql -u user -ppassword auth_api < "/docker-entrypoint-initdb.d/ddl.sql"
