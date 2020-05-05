@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: documents_api
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/mysql/conf.d:/etc/mysql/conf.d
+      - ./db/mysql/sql:/docker-entrypoint-initdb.d
